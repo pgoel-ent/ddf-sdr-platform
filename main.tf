@@ -144,7 +144,7 @@ module "module_keyvault_diagsettings"{
 ################################## Cosmos DB ################################################
 module "module_cosmosdb"{
     source                       = "./modules/cosmos_db"
-    cosmos_db_account_name              = "cdb-${var.subscription_acronym}-${var.env_acronym}-${var.location}"
+    cosmos_db_account_name              = "cdb-${var.subscription_acronym}c-${var.env_acronym}-${var.location}"
     rg_name                             = module.module_resource_group.rg_name
     rg_location                         = module.module_resource_group.rg_location
     offer_type                          = var.offer_type
