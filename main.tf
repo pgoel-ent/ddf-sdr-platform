@@ -88,7 +88,7 @@ module "module_deligatedsubnet2" {
 
 module "module_loganalytics_workspace"{
     source                       = "./modules/log_analytics_workspace"
-    log_analytics_workspace_name = "law-${var.subscription_acronym}-${var.env_acronym}-${var.location}"
+    log_analytics_workspace_name = "law-${var.subscription_acronym}c-${var.env_acronym}-${var.location}"
     rg_location                  = module.module_resource_group_2.rg_location
     rg_name                      = module.module_resource_group_2.rg_name
     sku                          = var.log_analytics_sku
