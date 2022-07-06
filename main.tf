@@ -189,7 +189,7 @@ module "module_cosmosdb_diagsettings"{
 ##################################### API Management ####################################
 module "module_apimanagement"{
       source                            = "./modules/api_management"
-      apim_name                         = "apim-${var.subscription_acronym}-${var.env_acronym}-${var.location}"
+      apim_name                         = "apim-${var.subscription_acronym}c-${var.env_acronym}-${var.location}"
       rg_name                           = module.module_resource_group.rg_name
       rg_location                       = module.module_resource_group.rg_location
       publisher_name                    = var.publisher_name
@@ -209,7 +209,7 @@ module "module_apimanagement"{
       azurerm_application_insights_id   = module.module_app_insights.app_insights_id
       appinsights_instrumentation_key   = module.module_app_insights.instrumentation_key  
       identity_type                     = var.identity_type
-      host_name                         = "apim-${var.subscription_acronym}-${var.env_acronym}-${var.location}.azure-api.net"
+      host_name                         = "apim-${var.subscription_acronym}c-${var.env_acronym}-${var.location}.azure-api.net"
       service_url                       = "https://${module.module_appservice2.appservice_name}"
       apiendpointname                   = var.apiendpointname
       apiendpointdisplayname            = var.apiendpointdisplayname
@@ -278,7 +278,7 @@ module "module_appserviceplan2" {
 ########################### AppService plan Diagonostic settings#######################################
 module "module_appserviceplan01_diagsettings"{
     source                         = "./modules/app_service_plan_diagsettings"
-    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-001"
+    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}c-${var.env_acronym}-${var.location}-001"
     target_resource_id             = module.module_appserviceplan.app_service_plan_id
     log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
     /* enable_metric_retention_policy = "true"
@@ -287,7 +287,7 @@ module "module_appserviceplan01_diagsettings"{
 }
 module "module_appserviceplan02_diagsettings"{
     source                         = "./modules/app_service_plan_diagsettings"
-    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-002"
+    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}c-${var.env_acronym}-${var.location}-002"
     target_resource_id             = module.module_appserviceplan2.app_service_plan_id
     log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
     /* enable_metric_retention_policy = "true"
@@ -298,7 +298,7 @@ module "module_appserviceplan02_diagsettings"{
 ############################ App Service ################################################
 module "module_appservice"{
     source                       = "./modules/app_service"
-    app_service_name             = "apps-${var.subscription_acronym}${var.fe_acronym}-${var.env_acronym}-${var.location}-001"
+    app_service_name             = "apps-${var.subscription_acronym}${var.fe_acronym}c-${var.env_acronym}-${var.location}-001"
     rg_name                      = module.module_resource_group.rg_name
     rg_location                  = module.module_resource_group.rg_location
     app_service_plan_id          = module.module_appserviceplan.app_service_plan_id
@@ -325,7 +325,7 @@ module "module_appservice"{
 
 module "module_appservice2"{
     source                                  = "./modules/app_service"
-    app_service_name                        = "apps-${var.subscription_acronym}${var.be_acronym}-${var.env_acronym}-${var.location}-002"
+    app_service_name                        = "apps-${var.subscription_acronym}${var.be_acronym}c-${var.env_acronym}-${var.location}-002"
     rg_name                                 = module.module_resource_group.rg_name
     rg_location                             = module.module_resource_group.rg_location
     app_service_plan_id                     = module.module_appserviceplan2.app_service_plan_id
