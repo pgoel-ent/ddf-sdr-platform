@@ -276,24 +276,24 @@ module "module_appserviceplan2" {
 
 }
 ########################### AppService plan Diagonostic settings#######################################
-# module "module_appserviceplan01_diagsettings"{
-#     source                         = "./modules/app_service_plan_diagsettings"
-#     app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-001"
-#     target_resource_id             = module.module_appserviceplan.app_service_plan_id
-#     log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
-#     /* enable_metric_retention_policy = "true"
-#     metric_retention_days          = "7" */
+module "module_appserviceplan01_diagsettings"{
+    source                         = "./modules/app_service_plan_diagsettings"
+    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-001"
+    target_resource_id             = module.module_appserviceplan.app_service_plan_id
+    log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
+    /* enable_metric_retention_policy = "true"
+    metric_retention_days          = "7" */
 
-# }
-# module "module_appserviceplan02_diagsettings"{
-#     source                         = "./modules/app_service_plan_diagsettings"
-#     app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-002"
-#     target_resource_id             = module.module_appserviceplan2.app_service_plan_id
-#     log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
-#     /* enable_metric_retention_policy = "true"
-#     metric_retention_days          = "7" */
+}
+module "module_appserviceplan02_diagsettings"{
+    source                         = "./modules/app_service_plan_diagsettings"
+    app_service_plan_diag_name     = "diags-asp-${var.subscription_acronym}-${var.env_acronym}-${var.location}-002"
+    target_resource_id             = module.module_appserviceplan2.app_service_plan_id
+    log_analytics_workspace_id     = module.module_loganalytics_workspace.log_analytics_id
+    /* enable_metric_retention_policy = "true"
+    metric_retention_days          = "7" */
 
-# }
+}
 
 ############################ App Service ################################################
 module "module_appservice"{
