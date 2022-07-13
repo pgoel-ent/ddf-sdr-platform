@@ -495,13 +495,12 @@ module "module_keyvault_access_policy_appservice_api" {
 
 module "module_app_registration" {
   source                        = "./modules/azuread_appregistration"
-  display_name                  = "spn_${var.subscription_acronym}_${var.env_acronym}_${var.fe_acronym}"
-  identifier_uris               = ["api://spn_${var.subscription_acronym}_${var.env_acronym}_${var.fe_acronym}"]
+  display_name                  = "spn_${var.subscription_acronym}_qa_${var.fe_acronym}"
+  identifier_uris               = ["api://spn_${var.subscription_acronym}_qa_${var.fe_acronym}"]
   sign_in_audience              = var.sign_in_audience
   admin_consent_display_name    = var.admin_consent_display_name
   oauthvalue                    = var.oauthvalue
   claimname                     = var.claimname    
   redirect_uris                 = ["https://${module.module_appservice.appservice_name}/"]
-  depends_on                    = [module.module_appservice]  
-  
+  depends_on                    = [module.module_appservice]
 }
